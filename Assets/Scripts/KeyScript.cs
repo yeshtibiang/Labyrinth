@@ -10,7 +10,12 @@ public class KeyScript : MonoBehaviour
         if (collision.collider.tag == "Player")
         {
             GameObject.Find("DoorExitPoint").GetComponent<DoorController>().CanOpen = true; 
-            Destroy(gameObject);
+            
+            // lancer l'audio du pickup object
+            GetComponent<AudioSource>().Play();
+            GetComponent<MeshRenderer>().enabled = false;
+            GetComponent<BoxCollider>().enabled = false;
+            Destroy(gameObject, 3f);
         }
     }
 }
