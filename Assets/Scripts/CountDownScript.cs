@@ -32,5 +32,8 @@ public class CountDownScript : MonoBehaviour
             txtCountDown.text = "Time Left: " + startCountDown;
         }
         
+        // si fin de countdown alors GameOver
+        GameObject.Find("Player").GetComponent<PlayerController>().GameOver();
+        
     }
 }

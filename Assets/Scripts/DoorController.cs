@@ -11,11 +11,12 @@ public class DoorController : MonoBehaviour
     public bool CanOpen = false;
 
     [SerializeField] private AudioClip sonOpen, sonNoOpen;
-
+    [SerializeField] private Animator _doorOpenAnimator;
+    [SerializeField] private GameObject _particuleOut;
     private void Awake()
     {
         _audio = GetComponent<AudioSource>();
-        _animator = GetComponent<Animator>();
+        //_animator = GetComponent<Animator>();
     }
 
     private void Start()
@@ -26,7 +27,8 @@ public class DoorController : MonoBehaviour
     {
         if (other.tag == "Player" && CanOpen)
         {
-            _animator.enabled = true;
+            _particuleOut.SetActive(true);
+            _doorOpenAnimator.enabled = true;
             // lorsque le player a la clé
             _audio.PlayOneShot(sonOpen);
         }
